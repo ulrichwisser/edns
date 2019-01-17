@@ -4,10 +4,11 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/miekg/dns"
 	"math/rand"
 	"os"
 	"strings"
+
+	"github.com/miekg/dns"
 )
 
 const (
@@ -474,7 +475,7 @@ func Test7(server, zone string) error {
 
 	// check for errors
 	// ignore truncated error, the message has been decaded anyway
-	if err.Error() != "dns: failed to unpack truncated message" {
+	if err != nil && err.Error() != "dns: failed to unpack truncated message" {
 		return err
 	}
 	if r == nil {
